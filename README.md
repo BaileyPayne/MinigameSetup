@@ -1,4 +1,4 @@
 MinigameSetup
 =============
 
-Yet Another setup for a minigame!
+Improved Minigame Framework
