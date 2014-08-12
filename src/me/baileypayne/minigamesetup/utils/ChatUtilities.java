@@ -16,6 +16,9 @@ public class ChatUtilities {
             player.sendMessage(starter() + msg);
         }
     }
+    public static void sendMessage(Player player, String msg){
+        player.sendMessage(starter() + msg);
+    }
     private static String starter(){
         return DARK_GRAY + "[" + RED + "Minigame" + DARK_GRAY + "]" + WHITE;
     }

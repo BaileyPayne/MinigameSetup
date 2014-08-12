@@ -14,10 +14,14 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author Bailey
  */
 public class MinigameSetup extends JavaPlugin {
+    
+    public static int startCountdownId;
      
+    @Override
     public void onEnable(){
         GameState.setState(GameState.IN_LOBBY);
-        new Thread(new StartCountdown()).start();
+        startCountdown();
+        
     }        
     public void registerListeners(){
         PluginManager pm = getServer().getPluginManager();
@@ -25,6 +29,20 @@ public class MinigameSetup extends JavaPlugin {
         pm.registerEvents(new PlayerQuit(this), this);
         pm.registerEvents(new AsyncPlayerPreLogin(this), this);
         pm.registerEvents(new PlayerDeath(this), this);
+    }
+    
+    
+    public void startCountdown(){
+        StartCountdown.timeUntilStart = 60;
+        startCountdownId = getServer().getScheduler().scheduleSyncRepeatingTask(this,
+                new StartCountdown(this), 20l, 20l);
+    }
+    public void stopCountdown(){
+        getServer().getScheduler().cancelTask(startCountdownId);
+    }
+    public void restartCountdown(){
+        stopCountdown();
+        startCountdown();
     }
     
 }

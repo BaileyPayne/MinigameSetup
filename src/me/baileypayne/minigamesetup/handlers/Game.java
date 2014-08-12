@@ -31,8 +31,10 @@ public class Game {
         for(Player player : Bukkit.getOnlinePlayers()){
             if(i > Team.getAllTeams().size())
                 i = 0;
-            Team.getTeam(Team.getAllTeams().get(i++).getName()).add(player);
+            Team.getTeam(Team.getAllTeams().get(i).getName()).add(player);
             LocationUtilities.teleportToGame(player, Team.getAllTeams().get(i));
+            Kit.getKit(player).giveKit(player);
+            i ++;
             
         }
     }

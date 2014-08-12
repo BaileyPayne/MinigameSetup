@@ -14,12 +14,12 @@ import org.bukkit.entity.Player;
  */
 public class Team {
     
-    private static List<Team> allTeams = new ArrayList<Team>();
-    private static List<Team> activeTeams = new ArrayList<Team>();
+    private static List<Team> allTeams = new ArrayList<>();
+    private static List<Team> activeTeams = new ArrayList<>();
     
-    private List<String> members = new ArrayList<String>();
+    private List<String> members = new ArrayList<>();
     
-    private static HashMap<String, Team> playerTeams = new HashMap<String, Team>();
+    private static HashMap<String, Team> playerTeams = new HashMap<>();
     
     private String teamName;
     
@@ -44,8 +44,9 @@ public class Team {
         members.add(player.getName());
     }
     public boolean remove(Player player){
-        if(!hasTeam(player))
+        if(!hasTeam(player)) 
             return false;
+        
             playerTeams.remove(player.getName());
             members.remove(player.getName());
             
